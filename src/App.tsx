@@ -1,4 +1,3 @@
-import MouseSpotlight from './components/MouseSpotlight'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import Experience from './components/Experience'
@@ -10,7 +9,6 @@ import Footer from './components/Footer'
 export default function App() {
   return (
     <main className="bg-ink">
-      <MouseSpotlight />
       <Navbar />
       <Hero />
       <Experience />

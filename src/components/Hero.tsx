@@ -23,14 +23,23 @@ export default function Hero() {
 
       <div className="relative mx-auto flex min-h-[100dvh] max-w-7xl flex-col justify-center px-4 pt-20 md:px-6">
         <div className="max-w-2xl">
-          <motion.img
-            src="./assets/profile.jpg"
-            alt="Foto profil Ilham Pradina"
-            className="mb-6 h-20 w-20 sm:h-24 sm:w-24 rounded-2xl border-2 border-volt/50 object-cover object-top"
+          <motion.div
+            className="relative mb-7 inline-block"
             initial={reduceMotion ? false : { scale: 0.85, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             transition={{ duration: 0.7, ease: EASE }}
-          />
+          >
+            {/* volt halo behind the portrait */}
+            <span
+              className="absolute -inset-2 rounded-full bg-volt/25 blur-lg"
+              aria-hidden
+            />
+            <img
+              src="./assets/profile.jpg"
+              alt="Foto profil Ilham Pradina"
+              className="glow-volt relative h-32 w-32 sm:h-40 sm:w-40 md:h-44 md:w-44 rounded-full border-[3px] border-volt object-cover object-top"
+            />
+          </motion.div>
           <p className="font-mono text-[11px] sm:text-xs tracking-[0.18em] text-volt">
             <DecodeText text="ELECTRICAL ENGINEER // D4 TEKNIK ELEKTRO UNY" delay={300} />
           </p>
