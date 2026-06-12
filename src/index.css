@@ -1,0 +1,77 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Theme tokens as RGB channels so Tailwind opacity modifiers keep working */
+:root,
+:root[data-theme='dark'] {
+  --c-ink: 10 14 20;
+  --c-panel: 17 22 31;
+  --c-steel: 28 36 48;
+  --c-line: 36 48 66;
+  --c-fg: 230 234 242;
+  --c-dim: 138 148 166;
+  --c-volt: 255 214 10;
+  --c-grid: 230 234 242;
+}
+
+:root[data-theme='light'] {
+  --c-ink: 243 245 249;
+  --c-panel: 255 255 255;
+  --c-steel: 226 232 240;
+  --c-line: 208 216 228;
+  --c-fg: 23 30 41;
+  --c-dim: 90 102 120;
+  --c-volt: 161 98 7;
+  --c-grid: 23 30 41;
+}
+
+html {
+  scroll-behavior: smooth;
+  background-color: rgb(var(--c-ink));
+}
+
+body {
+  margin: 0;
+  background-color: rgb(var(--c-ink));
+  color: rgb(var(--c-fg));
+  font-family: 'Space Grotesk', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+::selection {
+  background-color: rgb(var(--c-volt));
+  color: rgb(var(--c-ink));
+}
+
+/* Blueprint grid backdrop */
+.bg-blueprint {
+  background-image:
+    linear-gradient(rgb(var(--c-grid) / 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(var(--c-grid) / 0.05) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+/* Soft glow for active electrical elements */
+.glow-volt {
+  box-shadow:
+    0 0 6px rgb(var(--c-volt) / 0.55),
+    0 0 18px rgb(var(--c-volt) / 0.18);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .pulse-dot {
+    animation: pulse-dot 2s ease-in-out infinite;
+  }
+}
+
+@keyframes pulse-dot {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.35;
+  }
+}
